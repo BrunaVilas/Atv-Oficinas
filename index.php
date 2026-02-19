@@ -10,47 +10,62 @@ $lista = $_SESSION['oficinas'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oficinas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    
-<h2>Cadastrar Oficina</h2>
+    <div class="container">
+        <div class="esquerda">
+            
+            <h2><span class="material-icons">add</span>Cadastrar Oficina</h2>
+            
+            <form action="manipular.php" method="POST">
+                <label for="nome">NOME DA MODALIDADE</label>
+                <input name="nome" placeholder="Ex. Pilates">
 
-<form action="manipular.php" method="POST">
-    <input name="nome" placeholder="Modalidade">
-    <input name="professor" placeholder="Professor">
-    <input name="horario" placeholder="Horário">
-    <input name="vagas" placeholder="Ex: 10/20">
+                <label for="professor">PROFESSOR RESPONSÁVEL</label>
+                <input name="professor" placeholder="Nome do instrutor">
 
-    <select name="status">
-        <option>Ativo</option>
-        <option>Inativo</option>
-    </select>
+                <label for="horario">HORÁRIO</label>
+                <input name="horario" placeholder="Ex:08:00 às 09:00">
 
-    <button type="submit">Cadastrar</button>
-</form>
+                <label for="vagas">VAGAS(ATUAL/TOTAL)</label>
+                <input name="vagas" placeholder="Ex: 10/20">
+                
+                <label for="vagas">STATUS INICIAL</label>
+                <select name="status">
+                    <option>Ativo</option>
+                    <option>Inativo</option>
+                </select>
+            
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
 
-<hr>
+        <div class="direita">
+            <div class="busca">             
+                <form action="manipular.php" method="GET">
+                    <input name="busca" placeholder="Buscar nas oficinas cadastradas...">
+                    <button>Filtrar</button>
+                </form>    
+            </div>
 
-<h2>Buscar</h2>
-
-<form action="manipular.php" method="GET">
-    <input name="busca" placeholder="Buscar oficina">
-    <button>Filtrar</button>
-</form>
-
-<hr>
-
-<h2>Oficinas</h2>
-
-<?php foreach ($lista as $item): ?>
-    <div style="border:1px solid #aaa; margin:10px; padding:10px;">
-        <h3><?= $item['nome'] ?></h3>
-        <p>Professor: <?= $item['professor'] ?></p>
-        <p>Horário: <?= $item['horario'] ?></p>
-        <p>Vagas: <?= $item['vagas'] ?></p>
-        <p>Status: <?= $item['status'] ?></p>
+            <div class="cards">
+                <?php foreach ($lista as $item): ?>
+                <div class="card">
+                    <h3><?= $item['nome'] ?></h3>
+                    <p>Professor <?= $item['professor'] ?></p>
+                    <p class="<?= ($item['status'] == "Ativo") ? "ativo" : "inativo" ?>">Status <?= $item['status'] ?></p>
+                    <p>Horário <?= $item['horario'] ?></p>
+                    <p>Vagas <?= $item['vagas'] ?></p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        
     </div>
-<?php endforeach; ?>
+    
 
 </body>
 </html>
