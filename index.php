@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$lista = $_SESSION['oficinas'];
+$lista = ($_SESSION["oficinas"]) ?? [];
+
 ?>
 
 <!DOCTYPE html>
@@ -52,12 +53,26 @@ $lista = $_SESSION['oficinas'];
 
             <div class="cards">
                 <?php foreach ($lista as $item): ?>
-                <div class="card">
-                    <h3><?= $item['nome'] ?></h3>
-                    <p>Professor <?= $item['professor'] ?></p>
-                    <p class="<?= ($item['status'] == "Ativo") ? "ativo" : "inativo" ?>">Status <?= $item['status'] ?></p>
-                    <p>Horário <?= $item['horario'] ?></p>
-                    <p>Vagas <?= $item['vagas'] ?></p>
+                    <div class="card">
+                        <h3><?= $item['nome'] ?></h3>
+                        <div class="card-interno">
+                            <div class="itens">
+                                <h4>Professor</h4>
+                                <p><span class="material-icons"> person </span><?= $item['professor'] ?> </p>
+                            </div>
+                            <div class="itens">
+                                <h4>Status</h4>
+                                <p class="<?= ($item['status'] == "Ativo") ? "ativo" : "inativo" ?>"> <?= $item['status'] ?></p>    
+                            </div>
+                            <div class="itens">
+                                <h4>Horário</h4>
+                                <p><span class="material-icons">schedule</span> <?= $item['horario'] ?></p>
+                            </div>
+                            <div class="itens">
+                                <h4>Vagas</h4>
+                                <p><span class="material-icons"> groups </span> <?= $item['vagas'] ?></p>
+                            </div>
+                        </div>
                     </div>
                     <?php endforeach; ?>
                 </div>

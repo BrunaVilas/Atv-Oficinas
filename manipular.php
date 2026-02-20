@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['oficinas'])) {
-    $_SESSION['oficinas'] = [];
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nome = $_POST['nome'] ?? '';
@@ -24,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
 
         header("Location: index.php");
-        exit;
     }
 }
 
