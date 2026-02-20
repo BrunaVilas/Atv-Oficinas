@@ -15,7 +15,7 @@
 h2{
     color:#4b3fb4;
     margin-bottom:15px;
-    span{
+    .material-icons{
         background-color: #4b3fb4;
         color: white;
         border-radius: 100%;
@@ -26,6 +26,22 @@ h2{
 h3{
     color:#4b3fb4;
     margin-bottom:10px;
+    font-size: 1.5rem;
+}
+
+h4{
+    color:gray;
+    margin-bottom:4px;
+    font-size: 1rem;
+}
+
+p{
+    margin-bottom:4px;
+    font-size: 1rem;
+    .material-icons{
+        color:#4b3fb4;
+        font-size: 1.25rem;
+    }
 }
 
 label{
@@ -89,16 +105,29 @@ button:hover{
     
     .cards{
         display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
         gap:15px;
         background:white;
         border-radius:15px;
         box-shadow:0 4px 10px rgba(0,0,0,0.08);
+        flex-wrap: wrap;
+        width: 350px;
         .card{
             border:1px solid #dddddd;
             border-radius: 10px;
             margin:10px;
             padding:15px;
+            flex-wrap: wrap;
+
+            .card-interno{
+                display: grid;
+                grid-template-columns:repeat(2,185px);
+
+                .itens{
+                    width: 70%;
+                }
+            }
+
 
             .ativo{
                 background:#dff3e6;
@@ -107,6 +136,8 @@ button:hover{
                 border-radius:10px;
                 font-size:12px;
                 font-weight:bold;
+                width: 60px;
+                text-align: center;
             }
             .inativo{
                 background:#ffdede;
@@ -115,6 +146,7 @@ button:hover{
                 border-radius:10px;
                 font-size:12px;
                 font-weight:bold;
+                width: 60px;
             }
         }
     }

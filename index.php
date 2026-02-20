@@ -1,8 +1,13 @@
 <?php
 session_start();
 
+<<<<<<< HEAD
 $lista = $_SESSION['oficinas'];
 $filtro = $_GET['busca'] ?? "";
+=======
+$lista = ($_SESSION["oficinas"]) ?? [];
+
+>>>>>>> parte-Bruna
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +57,7 @@ $filtro = $_GET['busca'] ?? "";
             </div>
 
             <div class="cards">
+<<<<<<< HEAD
                 <?php foreach($lista as $oficina): ?>
                     <?php if($filtro == "" || strtolower($oficina['nome']) == strtolower($filtro)): ?>
                             <div class="card">
@@ -62,6 +68,30 @@ $filtro = $_GET['busca'] ?? "";
                                 <p>Vagas <?= $oficina['vagas'] ?></p>
                                 </div>
                         <?php endif; ?>
+=======
+                <?php foreach ($lista as $item): ?>
+                    <div class="card">
+                        <h3><?= $item['nome'] ?></h3>
+                        <div class="card-interno">
+                            <div class="itens">
+                                <h4>Professor</h4>
+                                <p><span class="material-icons"> person </span><?= $item['professor'] ?> </p>
+                            </div>
+                            <div class="itens">
+                                <h4>Status</h4>
+                                <p class="<?= ($item['status'] == "Ativo") ? "ativo" : "inativo" ?>"> <?= $item['status'] ?></p>    
+                            </div>
+                            <div class="itens">
+                                <h4>Horário</h4>
+                                <p><span class="material-icons">schedule</span> <?= $item['horario'] ?></p>
+                            </div>
+                            <div class="itens">
+                                <h4>Vagas</h4>
+                                <p><span class="material-icons"> groups </span> <?= $item['vagas'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> parte-Bruna
                     <?php endforeach; ?>
 
             </div>
