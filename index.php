@@ -53,7 +53,7 @@ $filtro = $_GET['busca'] ?? "";
 
             <div class="cards">
                 <?php foreach($lista as $oficina): ?>
-                    <?php if($filtro == "" || $oficina['nome'] == $filtro): ?>
+                    <?php if($filtro == "" || strtolower($oficina['nome']) == strtolower($filtro)): ?>
                             <div class="card">
                                 <h3><?= $oficina['nome'] ?></h3>
                                 <p>Professor <?= $oficina['professor'] ?></p>
