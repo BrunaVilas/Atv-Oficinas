@@ -1,7 +1,11 @@
 <?php
 session_start();
 
+$lista = $_SESSION['oficinas'];
+$filtro = $_GET['busca'] ?? "";
+=======
 $lista = ($_SESSION["oficinas"]) ?? [];
+
 
 ?>
 
@@ -45,37 +49,25 @@ $lista = ($_SESSION["oficinas"]) ?? [];
 
         <div class="direita">
             <div class="busca">             
-                <form action="manipular.php" method="GET">
+                <form method="GET">
                     <input name="busca" placeholder="Buscar nas oficinas cadastradas...">
                     <button>Filtrar</button>
                 </form>    
             </div>
 
             <div class="cards">
-                <?php foreach ($lista as $item): ?>
-                    <div class="card">
-                        <h3><?= $item['nome'] ?></h3>
-                        <div class="card-interno">
-                            <div class="itens">
-                                <h4>Professor</h4>
-                                <p><span class="material-icons"> person </span><?= $item['professor'] ?> </p>
-                            </div>
-                            <div class="itens">
-                                <h4>Status</h4>
-                                <p class="<?= ($item['status'] == "Ativo") ? "ativo" : "inativo" ?>"> <?= $item['status'] ?></p>    
-                            </div>
-                            <div class="itens">
-                                <h4>Horário</h4>
-                                <p><span class="material-icons">schedule</span> <?= $item['horario'] ?></p>
-                            </div>
-                            <div class="itens">
-                                <h4>Vagas</h4>
-                                <p><span class="material-icons"> groups </span> <?= $item['vagas'] ?></p>
-                            </div>
-                        </div>
-                    </div>
+                <?php foreach($lista as $oficina): ?>
+                    <?php if($filtro == "" || strtolower($oficina['nome']) == strtolower($filtro)): ?>
+                            <div class="card">
+                                <h3><?= $oficina['nome'] ?></h3>
+                                <p>Professor <?= $oficina['professor'] ?></p>
+                                <p class="<?= ($oficina['status'] == "Ativo") ? "ativo" : "inativo" ?>">Status <?= $oficina['status'] ?></p>
+                                <p>Horário <?= $oficina['horario'] ?></p>
+                                <p>Vagas <?= $oficina['vagas'] ?></p>
+                                </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
-                </div>
+
             </div>
         </div>
         
