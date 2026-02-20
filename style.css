@@ -111,7 +111,6 @@ button:hover{
         border-radius:15px;
         box-shadow:0 4px 10px rgba(0,0,0,0.08);
         flex-wrap: wrap;
-        width: 350px;
         .card{
             border:1px solid #dddddd;
             border-radius: 10px;
@@ -122,6 +121,7 @@ button:hover{
             .card-interno{
                 display: grid;
                 grid-template-columns:repeat(2,185px);
+                flex-wrap: wrap;
 
                 .itens{
                     width: 70%;
